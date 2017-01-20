@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,6 @@ public class Agent : MonoBehaviour, IInitializable
     private void SelectNewTarget()
     {
         CurrentTarget = _locations[UnityEngine.Random.Range(0, _locations.Count)];
-        transform.DOMove(CurrentTarget.transform.position, 10).OnComplete(SelectNewTarget);
+        transform.DOMove(CurrentTarget.transform.position, 2).OnComplete(SelectNewTarget);
     }
 }
