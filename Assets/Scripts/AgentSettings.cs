@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class AgentSettings : ScriptableObject
 {
-    
+    public Agent Prefab;
+	public MultiplierRange[] MultiplierRanges;
 }

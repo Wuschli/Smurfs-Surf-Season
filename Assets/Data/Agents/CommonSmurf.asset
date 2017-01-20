@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31874df7a3bf40e2bc99ecccf4fba85, type: 3}
+  m_Name: CommonSmurf
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 114097929505193530, guid: 5454d40c68a2e4f58a68116933b02eb4, type: 2}
+  MultiplierRanges:
+  - Need: {fileID: 11400000, guid: 0900a814277e34603b491b429488ad6e, type: 2}
+    Min: 0.5
+    Max: 1.5
+  - Need: {fileID: 11400000, guid: 955ff9f544ebf4aaf8874773cf6a746d, type: 2}
+    Min: 0.5
+    Max: 1.5
+  - Need: {fileID: 11400000, guid: 73d236d1270784b629d2e2afd4836fad, type: 2}
+    Min: 0.5
+    Max: 1.5
+  - Need: {fileID: 11400000, guid: 8f89cecf651834d24b591404d8cfbc77, type: 2}
+    Min: 0.5
+    Max: 1.5
