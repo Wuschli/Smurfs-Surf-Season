@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d31874df7a3bf40e2bc99ecccf4fba85, type: 3}
-  m_Name: CommonSmurf
+  m_Name: Smurfette
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 114097929505193530, guid: 5454d40c68a2e4f58a68116933b02eb4, type: 2}
+  Prefab: {fileID: 114933458256766668, guid: 47da0919126a08b41b5baf19f3c67681, type: 2}
   NeedRanges:
   - Need: {fileID: 11400000, guid: 0900a814277e34603b491b429488ad6e, type: 2}
     Min: 0.5
@@ -25,4 +25,4 @@ MonoBehaviour:
   - Need: {fileID: 11400000, guid: 8f89cecf651834d24b591404d8cfbc77, type: 2}
     Min: 0.5
     Max: 1.5
-  Propability: 10
+  Propability: 1

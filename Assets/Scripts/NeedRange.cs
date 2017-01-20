@@ -1,7 +1,8 @@
-﻿using System;
+using System;
+using Settings;
 
 [Serializable]
-public class MultiplierRange
+public class NeedRange
 {
 	public NeedSettings Need;
 	public float Min;

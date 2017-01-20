@@ -1,23 +1,30 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
+using Settings;
 using UnityEngine;
 using Zenject;
 
-public class Agent : MonoBehaviour, ITickable
+public class Agent : MonoBehaviour, IInitializable
 {
     public Location CurrentTarget;
 
-	[Inject]
-	public Map Map;
+    [Inject] private Map _map;
+    [Inject] private List<Location> _locations;
 
-	[Inject]
-	public IList<NeedSettings> Needs;
+    public Dictionary<NeedSettings, float> Multipliers = new Dictionary<NeedSettings, float>();
 
-	public Dictionary<NeedSettings, float> Multipliers = new Dictionary<NeedSettings, float>();
+    [Inject]
+    public void Initialize()
+    {
+        SelectNewTarget();
+    }
 
-	public void Tick()
-	{
-		
-	}
+    private void SelectNewTarget()
+    {
+        CurrentTarget = _locations[UnityEngine.Random.Range(0, _locations.Count)];
+        transform.DOMove(CurrentTarget.transform.position, 10).OnComplete(SelectNewTarget);
+    }
 }

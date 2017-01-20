@@ -12,7 +12,7 @@ namespace Zenject
             BindInfo bindInfo, Type factoryType, Func<DiContainer, IProvider> providerFunc)
             : base(bindInfo)
         {
-            // Note that it doesn't derive from Factory<TContract>
+            // Note that it doesn't derive from CustomAgentFactory<TContract>
             // when used with To<>, so we can only check IDynamicFactory
             Assert.That(factoryType.DerivesFrom<IDynamicFactory>());
 

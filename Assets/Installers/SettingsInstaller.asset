@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f51993fd2fca7340bf74c367e731af6, type: 3}
+  m_Name: SettingsInstaller
+  m_EditorClassIdentifier: 
+  AgentSettings:
+  - {fileID: 11400000, guid: 766361ccd4ae342d1ac51a174107042a, type: 2}
+  - {fileID: 11400000, guid: e656dbe56659a384fac967e91358363c, type: 2}
+  NeedSettings:
+  - {fileID: 11400000, guid: 0900a814277e34603b491b429488ad6e, type: 2}
+  - {fileID: 11400000, guid: 955ff9f544ebf4aaf8874773cf6a746d, type: 2}
+  - {fileID: 11400000, guid: 73d236d1270784b629d2e2afd4836fad, type: 2}
+  - {fileID: 11400000, guid: 8f89cecf651834d24b591404d8cfbc77, type: 2}
