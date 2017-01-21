@@ -29,5 +29,6 @@ public class AgentSpawnerSink : MonoBehaviour, IWorldTickable, IWorldInitializab
         var agent = _agentAgentFactory.Create();
         agent.transform.position = transform.position;
 		_world.Register(agent);
+		_world.Agents.Add(agent);
     }
 }

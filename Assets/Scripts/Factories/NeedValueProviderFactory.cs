@@ -21,7 +21,11 @@ namespace Factories
 		}
 		public INeedValueProvider Create(NeedRange range, Location location)
 		{
-			var result = _container.Instantiate<DefaultNeedValueProvider>(new object[] { location, range.Need, UnityEngine.Random.Range(range.Min, range.Max) });
+			INeedValueProvider result = null;
+			if (range.Need.name.ToLower() == "rush")
+				result = _container.Instantiate<RushNeedValueProvider>(new object[] { location, range.Need });
+			else
+				result = _container.Instantiate<DefaultNeedValueProvider>(new object[] { location, range.Need, UnityEngine.Random.Range(range.Min, range.Max) });
 			_world.Register(result);
 			return result;
 		}

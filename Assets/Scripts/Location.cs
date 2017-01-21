@@ -11,8 +11,10 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
     [Inject] public LocationSettings Settings;
 	[Inject] private NeedValueProviderFactory _needValueProviderFactory;
 	public float Radius = .5f;
+	public int Size = 15;
 
 	public Dictionary<NeedSettings, INeedValueProvider> Values = new Dictionary<NeedSettings, INeedValueProvider>();
+	public HashSet<Agent> Agents = new HashSet<Agent>();
 
 	public void WorldTick()
 	{

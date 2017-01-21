@@ -7,6 +7,8 @@ using Zenject;
 
 public class World: ITickable
 {
+	public readonly HashSet<Agent> Agents = new HashSet<Agent>();
+
 	[Inject] private WorldSettings _settings;
 	[Inject] private List<IWorldTickable> _tickables;
 	[Inject] private List<IWorldInitializable> _initializables;
