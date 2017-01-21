@@ -7,5 +7,9 @@ namespace Settings
 		public float MinValue = 0f;
 		public float MaxValue = 10f;
 		public float MaxChange = 2f;
+
+		public Sprite LowIcon;
+		public Sprite MediumIcon;
+		public Sprite HighIcon;
     }
 }
