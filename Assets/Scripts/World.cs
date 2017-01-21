@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using Zenject;
 
-public class World: ITickable
+public class World: ITickable, IInitializable
 {
 	public readonly HashSet<Agent> Agents = new HashSet<Agent>();
-	public int Money = 100;
+	public int Money;
 
-	[Inject] private WorldSettings _settings;
+	[Inject] public WorldSettings Settings;
 	[Inject] private List<IWorldTickable> _tickables;
 	[Inject] private List<IWorldInitializable> _initializables;
 	private float _tickTimer = 0f;
@@ -25,10 +25,10 @@ public class World: ITickable
 
 	public void Tick()
 	{
-		_tickTimer += Time.deltaTime;
-		if (_tickTimer < _settings.TickLength)
+		_tickTimer -= Time.deltaTime;
+		if (_tickTimer > 0)
 			return;
-		_tickTimer = 0f;
+		_tickTimer = Settings.TickLength;
 
 		Profiler.BeginSample("WorldTick");
 
@@ -41,10 +41,17 @@ public class World: ITickable
 				_tickables.Add(initializable as IWorldTickable);
 		}
 
+		_tickables.RemoveAll((obj) => obj == null);
+
 		foreach (var tickable in _tickables)
 			tickable.WorldTick();
 		Profiler.EndSample();
 
 		Money = Math.Max(0, Money);
+	}
+
+	public void Initialize()
+	{
+		Money = Settings.StartingMoney;
 	}
 }

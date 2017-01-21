@@ -24,8 +24,6 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 	{
 		get
 		{
-			if (_buildingSpots == null)
-				_buildingSpots = GetComponentsInChildren<BuildingSpot>();
 			return _buildingSpots.Any(spot => spot.Building == null);
 		}
 	}
@@ -38,6 +36,7 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 
     public void WorldInitialize()
     {
+		_buildingSpots = GetComponentsInChildren<BuildingSpot>();
         foreach (var need in Settings.Needs)
         {
 			Values[need.Need] = _needValueProviderFactory.Create(need, this);
