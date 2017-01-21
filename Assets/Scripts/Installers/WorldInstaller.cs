@@ -14,8 +14,7 @@ namespace Installers
             {
                 Container.BindAllInterfacesAndSelf<Location>().FromInstance(location);
             }
-            foreach (var agentSpawnerSink in Map.GetComponentsInChildren<AgentSpawnerSink>())
-                Container.BindAllInterfacesAndSelf<AgentSpawnerSink>().FromInstance(agentSpawnerSink);
+			Container.BindAllInterfacesAndSelf<AgentSpawnerSink>().FromInstance(Map.GetComponentInChildren<AgentSpawnerSink>());
         }
     }
 }

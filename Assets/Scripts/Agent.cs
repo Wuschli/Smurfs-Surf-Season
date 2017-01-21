@@ -12,6 +12,7 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 
     [Inject] private Map _map;
     [Inject] private List<Location> _locations;
+	[Inject] private AgentSpawnerSink _spawnerSink;
 
     public Dictionary<NeedSettings, float> Multipliers = new Dictionary<NeedSettings, float>();
 	private Tweener _activeTween;
@@ -25,9 +26,19 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 
     private void SelectNewTarget()
     {
-		var newTarget = CalculatePreferedLocation();
 		if (_idleTimer > 0)
 			return;
+		var newTarget = CalculatePreferedLocation();
+		if (newTarget == null)
+		{
+			if (CurrentTarget != null)
+				CurrentTarget.Agents.Remove(this);
+			_activeTween = transform.DOMove(_spawnerSink.transform.position, (_spawnerSink.transform.position - transform.position).magnitude / Settings.movementSpeed);
+			_activeTween.OnComplete(() => {
+				Destroy(gameObject);
+			});
+			return;
+		}
 		var offset = UnityEngine.Random.insideUnitCircle * newTarget.Radius;
 		var targetPosition = newTarget.transform.position;
 		targetPosition.x += offset.x;
@@ -61,9 +72,12 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 
 	private Location CalculatePreferedLocation()
 	{
-		return _locations.OrderByDescending(loc =>
+		var result = _locations.OrderByDescending(loc =>
 		{
 			return loc.Values.Sum(val => val.Value.Value * Multipliers[val.Key]);
 		}).First();
+		if (result.Values.Sum(val => val.Value.Value * Multipliers[val.Key]) < Settings.minNeedSum)
+			return null;
+		return result;
 	}
 }

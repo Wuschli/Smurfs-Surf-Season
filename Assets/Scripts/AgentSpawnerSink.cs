@@ -10,6 +10,7 @@ public class AgentSpawnerSink : MonoBehaviour, IWorldTickable, IWorldInitializab
 {
     [Inject] private AgentFactory _agentAgentFactory;
 	[Inject] private World _world;
+	[Inject] private WorldSettings _worldSettings;
 
 	public void WorldInitialize()
 	{
@@ -21,7 +22,8 @@ public class AgentSpawnerSink : MonoBehaviour, IWorldTickable, IWorldInitializab
 
 	public void WorldTick()
 	{
-		SpawnAgent();
+		if (_worldSettings.SpawnRate.Evaluate(_world.Agents.Count) > UnityEngine.Random.value)
+			SpawnAgent();
 	}
 
 	private void SpawnAgent()
