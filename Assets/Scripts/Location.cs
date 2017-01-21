@@ -33,6 +33,7 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 	public void WorldTick()
 	{
 		_world.Money += _buildingSpots.Where(spot => spot.Building != null).Sum(spot => spot.Building.Income) * Agents.Count;
+		_world.Money -= _buildingSpots.Where(spot => spot.Building != null).Sum(spot => spot.Building.MaintenanceCost);
 	}
 
     public void WorldInitialize()

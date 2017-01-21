@@ -12,3 +12,21 @@ MonoBehaviour:
   m_Name: WorldSettings
   m_EditorClassIdentifier: 
   TickLength: 1
+  SpawnRate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: -0.014437502
+      outSlope: -0.014437502
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 200
+      value: 0
+      inSlope: -0.0013636362
+      outSlope: -0.0013636362
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

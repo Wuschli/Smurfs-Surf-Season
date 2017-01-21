@@ -8,5 +8,6 @@ namespace Settings
 		public int Cost;
 		public int Income;
 		public Sprite Icon;
+		public int MaintenanceCost;
 	}
 }

@@ -44,5 +44,7 @@ public class World: ITickable
 		foreach (var tickable in _tickables)
 			tickable.WorldTick();
 		Profiler.EndSample();
+
+		Money = Math.Max(0, Money);
 	}
 }
