@@ -13,6 +13,7 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
     [Inject] private Map _map;
     [Inject] private List<Location> _locations;
 	[Inject] private AgentSpawnerSink _spawnerSink;
+	[Inject] private World _world;
 
     public Dictionary<NeedSettings, float> Multipliers = new Dictionary<NeedSettings, float>();
 	private Tweener _activeTween;
@@ -35,6 +36,7 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 				CurrentTarget.Agents.Remove(this);
 			_activeTween = transform.DOMove(_spawnerSink.transform.position, (_spawnerSink.transform.position - transform.position).magnitude / Settings.movementSpeed);
 			_activeTween.OnComplete(() => {
+				_world.Agents.Remove(this);
 				Destroy(gameObject);
 			});
 			return;

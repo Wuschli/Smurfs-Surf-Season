@@ -41,8 +41,6 @@ public class World: ITickable
 				_tickables.Add(initializable as IWorldTickable);
 		}
 
-		_tickables.RemoveAll((obj) => obj == null);
-
 		foreach (var tickable in _tickables)
 			tickable.WorldTick();
 		Profiler.EndSample();
