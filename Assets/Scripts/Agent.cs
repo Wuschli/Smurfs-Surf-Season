@@ -27,27 +27,39 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 
     private void SelectNewTarget()
     {
-        CurrentTarget = _locations[UnityEngine.Random.Range(0, _locations.Count)];
+		var newTarget = CalculatePreferedLocation();
+		if (_idleTimer > 0)
+			return;
+		if (newTarget != CurrentTarget)
+		{
+			_idleTimer = Settings.idleTicks;
+			CurrentTarget = newTarget;
+		}
+		else {
+			_idleTimer = Settings.sameLocationIdleTicks;
+		}
 		var offset = UnityEngine.Random.insideUnitCircle * CurrentTarget.Radius;
 		var targetPosition = CurrentTarget.transform.position;
 		targetPosition.x += offset.x;
 		targetPosition.y += offset.y;
-		_activeTween = transform.DOMove(targetPosition, 2);
+		_activeTween = transform.DOMove(targetPosition, (targetPosition - transform.position).magnitude / Settings.movementSpeed);
 		_activeTween.OnComplete(() => _activeTween = null);
 		_activeTween.SetEase(Ease.Linear);
-		_idleTimer = Settings.idleTicks;
     }
 
 	public void WorldTick()
 	{
-		if (_idleTimer > 0)
-		{
-			_idleTimer--;
+		if (_activeTween != null)
 			return;
-		}
-		if (_activeTween == null)
+		_idleTimer--;
+		SelectNewTarget();
+	}
+
+	private Location CalculatePreferedLocation()
+	{
+		return _locations.OrderByDescending(loc =>
 		{
-			SelectNewTarget();
-		}
+			return loc.Values.Sum(val => val.Value * Multipliers[val.Key]);
+		}).First();
 	}
 }

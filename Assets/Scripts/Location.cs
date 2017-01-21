@@ -11,7 +11,7 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
     public LocationSettings Settings;
 	public float Radius = .5f;
 
-    private Dictionary<NeedSettings, float> _values = new Dictionary<NeedSettings, float>();
+	public Dictionary<NeedSettings, float> Values = new Dictionary<NeedSettings, float>();
 
 	public void WorldTick()
 	{
@@ -22,7 +22,7 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
     {
         foreach (var need in Settings.Needs)
         {
-            _values[need.Need] = UnityEngine.Random.Range(need.Min, need.Max);
+            Values[need.Need] = UnityEngine.Random.Range(need.Min, need.Max);
         }
     }
 

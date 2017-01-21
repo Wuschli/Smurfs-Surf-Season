@@ -34,7 +34,7 @@ public class World: ITickable
 			var initializable = _initializables.First();
 			_initializables.RemoveAt(0);
 			initializable.WorldInitialize();
-			if (initializable is IWorldTickable)
+			if (initializable is IWorldTickable && !_tickables.Contains(initializable as IWorldTickable))
 				_tickables.Add(initializable as IWorldTickable);
 		}
 

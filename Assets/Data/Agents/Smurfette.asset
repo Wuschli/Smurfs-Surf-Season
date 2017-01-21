@@ -25,5 +25,7 @@ MonoBehaviour:
   - Need: {fileID: 11400000, guid: 8f89cecf651834d24b591404d8cfbc77, type: 2}
     Min: 0.5
     Max: 1.5
-  Propability: 1
+  Propability: 10
   idleTicks: 10
+  sameLocationIdleTicks: 5
+  movementSpeed: 0.1

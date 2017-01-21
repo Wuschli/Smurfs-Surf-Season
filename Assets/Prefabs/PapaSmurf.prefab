@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4537736493557358}
   - component: {fileID: 114933458256766668}
   m_Layer: 14
-  m_Name: Smurfette
+  m_Name: PapaSmurf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: 1790477289
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 42f1263b9a0d743f0a4f2f2cea2b427f, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 42f1263b9a0d743f0a4f2f2cea2b427f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

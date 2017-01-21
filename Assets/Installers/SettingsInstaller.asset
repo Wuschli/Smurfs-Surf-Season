@@ -14,6 +14,7 @@ MonoBehaviour:
   AgentSettings:
   - {fileID: 11400000, guid: 766361ccd4ae342d1ac51a174107042a, type: 2}
   - {fileID: 11400000, guid: e656dbe56659a384fac967e91358363c, type: 2}
+  - {fileID: 11400000, guid: f8c5480929c764fe8a3faff71ff4ce8e, type: 2}
   NeedSettings:
   - {fileID: 11400000, guid: 0900a814277e34603b491b429488ad6e, type: 2}
   - {fileID: 11400000, guid: 955ff9f544ebf4aaf8874773cf6a746d, type: 2}
