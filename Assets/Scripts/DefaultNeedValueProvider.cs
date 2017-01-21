@@ -1,9 +1,12 @@
 ﻿using System;
+using Settings;
+using UnityEngine;
 using Zenject;
 
 public class DefaultNeedValueProvider : INeedValueProvider, IWorldTickable
 {
 	[Inject] public Location Location { get; set; }
+	[Inject] public NeedSettings NeedType { get; set; }
 
 	public float Value { get; private set;}
 
@@ -14,6 +17,7 @@ public class DefaultNeedValueProvider : INeedValueProvider, IWorldTickable
 
 	public void WorldTick()
 	{
-		Value += UnityEngine.Random.Range(-1, 1);
+		Value += UnityEngine.Random.Range(-NeedType.MaxChange / 2f, NeedType.MaxChange / 2f);
+		Value = Mathf.Clamp(Value, NeedType.MinValue, NeedType.MaxValue);
 	}
 }

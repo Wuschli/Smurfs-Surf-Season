@@ -1,9 +1,10 @@
 ﻿using System;
 using Settings;
+using Zenject;
 
 public interface INeedValueProvider
 {
 	float Value { get; }
-	//NeedSettings NeedType { get; set; }
-	Location Location { get; set; }
+	[Inject] NeedSettings NeedType { get; set; }
+	[Inject] Location Location { get; set; }
 }
