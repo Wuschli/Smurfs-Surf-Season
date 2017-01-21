@@ -6,31 +6,37 @@ using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(Button))]
-public class HutBuilder : MonoBehaviour {
+public class HutBuilder : MonoBehaviour
+{
 
-	[Inject] World _world;
+	[Inject]
+	World _world;
 
 	public Location Location;
 	public BuildingSettings Building;
 
 	Button _button;
 
-
-	void Awake()
+	Button Button
 	{
-		_button = GetComponent<Button>();
+		get
+		{
+			if (_button == null)
+				_button = GetComponent<Button>();
+			return _button;
+		}
 	}
 
 	void Update()
 	{
-		if (Location == null || _world == null)
-			return;
-		_button.interactable = Location.HasFreeBuildingSpot && _world.Money >= Building.Cost;
+		var costs = Building.Cost;
+		var freeSpots = Location.HasFreeBuildingSpot;
+		var enoughMoney = _world.Money >= costs;
+		Button.interactable = freeSpots && enoughMoney;
 	}
 
 	public void OnClick()
 	{
-		Debug.Log("Build Hut");
 		Location.AddBuilding(Building);
 	}
 }
