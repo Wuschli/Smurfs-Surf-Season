@@ -25,4 +25,10 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
             _values[need.Need] = UnityEngine.Random.Range(need.Min, need.Max);
         }
     }
+
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, Radius);
+	}
 }
