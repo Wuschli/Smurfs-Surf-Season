@@ -1,5 +1,5 @@
-﻿using Settings;
-using UnityEditor;
+﻿using UnityEditor;
+using Settings;
 
 namespace Editor
 {

@@ -11,3 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab90ae58041b4f5a97abaf5a12f7d43, type: 3}
   m_Name: Services
   m_EditorClassIdentifier: 
+  MinValue: 0
+  MaxValue: 10
+  MaxChange: 2
+  LowIcon: {fileID: 21300018, guid: eddd637a2568a462ab83545e0d53e761, type: 3}
+  MediumIcon: {fileID: 21300020, guid: eddd637a2568a462ab83545e0d53e761, type: 3}
+  HighIcon: {fileID: 21300022, guid: eddd637a2568a462ab83545e0d53e761, type: 3}

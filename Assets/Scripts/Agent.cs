@@ -28,21 +28,27 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 		var newTarget = CalculatePreferedLocation();
 		if (_idleTimer > 0)
 			return;
+		var offset = UnityEngine.Random.insideUnitCircle * newTarget.Radius;
+		var targetPosition = newTarget.transform.position;
+		targetPosition.x += offset.x;
+		targetPosition.y += offset.y;
+		_activeTween = transform.DOMove(targetPosition, (targetPosition - transform.position).magnitude / Settings.movementSpeed);
+		_activeTween.OnComplete(() =>
+		{
+			_activeTween = null;
+			newTarget.Agents.Add(this);
+		});
+		_activeTween.SetEase(Ease.Linear);
 		if (newTarget != CurrentTarget)
 		{
 			_idleTimer = Settings.idleTicks;
+			if (CurrentTarget != null)
+				CurrentTarget.Agents.Remove(this);
 			CurrentTarget = newTarget;
 		}
 		else {
 			_idleTimer = Settings.sameLocationIdleTicks;
 		}
-		var offset = UnityEngine.Random.insideUnitCircle * CurrentTarget.Radius;
-		var targetPosition = CurrentTarget.transform.position;
-		targetPosition.x += offset.x;
-		targetPosition.y += offset.y;
-		_activeTween = transform.DOMove(targetPosition, (targetPosition - transform.position).magnitude / Settings.movementSpeed);
-		_activeTween.OnComplete(() => _activeTween = null);
-		_activeTween.SetEase(Ease.Linear);
     }
 
 	public void WorldTick()
