@@ -15,9 +15,9 @@ public class World: ITickable
 	public void Register(object obj)
 	{
 		if (obj is IWorldInitializable)
-		{
 			_initializables.Add(obj as IWorldInitializable);
-		}
+		else if (obj is IWorldTickable)
+			_tickables.Add(obj as IWorldTickable);
 	}
 
 	public void Tick()

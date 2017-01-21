@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Settings;
@@ -59,7 +57,7 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 	{
 		return _locations.OrderByDescending(loc =>
 		{
-			return loc.Values.Sum(val => val.Value * Multipliers[val.Key]);
+			return loc.Values.Sum(val => val.Value.Value * Multipliers[val.Key]);
 		}).First();
 	}
 }
