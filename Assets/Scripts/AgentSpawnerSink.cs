@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,27 +6,28 @@ using Factories;
 using UnityEngine;
 using Zenject;
 
-public class AgentSpawnerSink : MonoBehaviour, IInitializable
+public class AgentSpawnerSink : MonoBehaviour, IWorldTickable, IWorldInitializable
 {
     [Inject] private AgentFactory _agentAgentFactory;
+	[Inject] private World _world;
 
-    public void Initialize()
-    {
-        StartCoroutine(AgentSpawner());
-    }
+	public void WorldInitialize()
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			SpawnAgent();
+		}
+	}
 
-    private IEnumerator AgentSpawner()
-    {
-        while (true)
-        {
-            SpawnAgent();
-            yield return new WaitForSecondsRealtime(1f);
-        }
-    }
+	public void WorldTick()
+	{
+		SpawnAgent();
+	}
 
-    private void SpawnAgent()
+	private void SpawnAgent()
     {
         var agent = _agentAgentFactory.Create();
         agent.transform.position = transform.position;
+		_world.Register(agent);
     }
 }

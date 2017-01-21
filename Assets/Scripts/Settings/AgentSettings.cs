@@ -7,5 +7,6 @@ namespace Settings
         public Agent Prefab;
         public NeedRange[] NeedRanges;
         public float Propability;
+		public int idleTicks = 5;
     }
 }

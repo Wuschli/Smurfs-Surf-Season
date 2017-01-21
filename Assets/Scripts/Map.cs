@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class Map : MonoBehaviour, ITickable
+public class Map : MonoBehaviour, IWorldTickable
 {
-    public void Tick()
+    public void WorldTick()
     {
     }
 }

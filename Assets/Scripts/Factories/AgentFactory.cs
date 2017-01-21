@@ -44,6 +44,7 @@ namespace Factories
             var result = _container.InstantiatePrefabForComponent<Agent>(settings.Prefab);
             foreach (var range in settings.NeedRanges)
                 result.Multipliers[range.Need] = UnityEngine.Random.Range(range.Min, range.Max);
+			result.Settings = settings;
             return result;
         }
     }

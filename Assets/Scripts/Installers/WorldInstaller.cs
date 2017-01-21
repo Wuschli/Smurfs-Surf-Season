@@ -2,12 +2,13 @@ using Zenject;
 
 namespace Installers
 {
-    public class MapInstaller : MonoInstaller
+    public class WorldInstaller : MonoInstaller
     {
         public Map Map;
 
         public override void InstallBindings()
         {
+			Container.BindAllInterfacesAndSelf<World>().To<World>().AsSingle();
             Container.BindAllInterfacesAndSelf<Map>().FromInstance(Map);
             foreach (var location in Map.GetComponentsInChildren<Location>())
             {

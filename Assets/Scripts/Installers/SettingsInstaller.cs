@@ -10,6 +10,7 @@ namespace Installers
         public AgentSettings[] AgentSettings;
         public NeedSettings[] NeedSettings;
         public LocationSettings LocationSettings;
+		public WorldSettings WorldSettings;
 
         public override void InstallBindings()
         {
@@ -18,6 +19,7 @@ namespace Installers
             foreach (var settings in NeedSettings)
                 Container.BindInstance(settings);
             Container.BindInstance(LocationSettings);
+			Container.BindInstance(WorldSettings);
         }
     }
 }
