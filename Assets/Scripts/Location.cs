@@ -5,30 +5,55 @@ using Settings;
 using Factories;
 using UnityEngine;
 using Zenject;
+using System.Linq;
 
 public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 {
     [Inject] public LocationSettings Settings;
 	[Inject] private NeedValueProviderFactory _needValueProviderFactory;
+	[Inject] private World _world;
 	public float Radius = .5f;
 	public int Size = 15;
 
 	public Dictionary<NeedSettings, INeedValueProvider> Values = new Dictionary<NeedSettings, INeedValueProvider>();
 	public HashSet<Agent> Agents = new HashSet<Agent>();
 
+	private IEnumerable<BuildingSpot> _buildingSpots;
+
+	public bool HasFreeBuildingSpot
+	{
+		get
+		{
+			if (_buildingSpots == null)
+				return false;
+			return _buildingSpots.Any(spot => spot.Building == null);
+		}
+	}
+
 	public void WorldTick()
 	{
-		
+		_world.Money += _buildingSpots.Where(spot => spot.Building != null).Sum(spot => spot.Building.Income) * Agents.Count;
 	}
 
     public void WorldInitialize()
     {
         foreach (var need in Settings.Needs)
         {
-            //Values[need.Need] = UnityEngine.Random.Range(need.Min, need.Max);
 			Values[need.Need] = _needValueProviderFactory.Create(need, this);
         }
+		_buildingSpots = GetComponentsInChildren<BuildingSpot>();
     }
+
+	public void AddBuilding(BuildingSettings building)
+	{
+		if (!HasFreeBuildingSpot)
+			return;
+		if (_world.Money >= building.Cost)
+		{
+			_buildingSpots.First(spot => spot.Building == null).Building = building;
+			_world.Money -= building.Cost;
+		}
+	}
 
 	void OnDrawGizmos()
 	{

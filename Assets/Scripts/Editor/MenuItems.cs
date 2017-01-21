@@ -28,5 +28,11 @@ namespace Editor
 		{
 			ScriptableObjectUtility.CreateAsset<WorldSettings>();
 		}
+
+		[MenuItem("Assets/Create/Settings/BuildingSettings")]
+		public static void CreateBuildingSettings()
+		{
+			ScriptableObjectUtility.CreateAsset<BuildingSettings>();
+		}
     }
 }
