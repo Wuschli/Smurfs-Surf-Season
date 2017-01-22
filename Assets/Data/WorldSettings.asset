@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6590051ad70994a0298926f64f99b469, type: 3}
   m_Name: WorldSettings
   m_EditorClassIdentifier: 
-  TickLength: 1
+  TickLength: 0.01
   SpawnRate:
     serializedVersion: 2
     m_Curve:

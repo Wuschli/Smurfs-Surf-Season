@@ -7,6 +7,8 @@ using Zenject;
 
 public class World: ITickable, IInitializable
 {
+	public static int Score;
+
 	public readonly HashSet<Agent> Agents = new HashSet<Agent>();
 	public int Money;
 
@@ -48,6 +50,7 @@ public class World: ITickable, IInitializable
 		Profiler.EndSample();
 
 		Money = Math.Max(0, Money);
+		Score = Money;
 	}
 
 	public void Initialize()
