@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 114214359124520070}
   - component: {fileID: 222473352890869768}
   - component: {fileID: 114889277615638480}
+  - component: {fileID: 114582695621264998}
   m_Layer: 8
   m_Name: TriggerEvent
   m_TagString: Untagged
@@ -111,6 +112,7 @@ GameObject:
   - component: {fileID: 114598313291394230}
   - component: {fileID: 222777814794987278}
   - component: {fileID: 114739041851547694}
+  - component: {fileID: 114570899647100010}
   m_Layer: 8
   m_Name: TriggerJetSki
   m_TagString: Untagged
@@ -144,6 +146,7 @@ GameObject:
   - component: {fileID: 114383992762743056}
   - component: {fileID: 222158865581153558}
   - component: {fileID: 114363220121350630}
+  - component: {fileID: 114606272513731406}
   m_Layer: 8
   m_Name: TriggerUmbrella
   m_TagString: Untagged
@@ -387,7 +390,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114889277615638480}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114582695621264998}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114277880572597216
@@ -534,7 +548,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114363220121350630}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114606272513731406}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114419688467538902
@@ -580,6 +605,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114570899647100010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536852389583416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14038595ad4f649eeb0c4fa8b740c01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Location: {fileID: 114759347598423308}
+  Buff: {fileID: 11400000, guid: 940e68b2f96d4434e99fec7bd9d6adee, type: 2}
 --- !u!114 &114578442755809974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -660,6 +698,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114582695621264998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515251005443554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14038595ad4f649eeb0c4fa8b740c01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Location: {fileID: 114759347598423308}
+  Buff: {fileID: 11400000, guid: 4cb3bf6cfdc3e49ccaf33f2fa5935aab, type: 2}
 --- !u!114 &114598313291394230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -699,9 +750,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114739041851547694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114570899647100010}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114606272513731406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586597669902040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14038595ad4f649eeb0c4fa8b740c01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Location: {fileID: 114759347598423308}
+  Buff: {fileID: 11400000, guid: 200e96395a49d49ecb4252b0d751ddad, type: 2}
 --- !u!114 &114632013019234168
 MonoBehaviour:
   m_ObjectHideFlags: 1

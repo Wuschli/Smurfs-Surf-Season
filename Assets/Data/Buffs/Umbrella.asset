@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9266409d74346648f24211169cc70c, type: 3}
+  m_Name: Umbrella
+  m_EditorClassIdentifier: 
+  Cost: 0
+  TickDuration: 0
+  Category: {fileID: 11400000, guid: 8f89cecf651834d24b591404d8cfbc77, type: 2}

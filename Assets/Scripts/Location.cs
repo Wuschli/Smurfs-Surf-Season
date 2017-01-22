@@ -54,6 +54,14 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 		}
 	}
 
+	public void TriggerBuff(BuffSettings buff){
+		if (_world.Money >= buff.Cost)
+		{
+			// To Do
+			_world.Money -= buff.Cost;
+		}
+	}
+
 	void OnDrawGizmos()
 	{
 		Gizmos.color = Color.red;

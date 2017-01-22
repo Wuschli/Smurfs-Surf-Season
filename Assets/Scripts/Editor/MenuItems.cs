@@ -34,5 +34,10 @@ namespace Editor
 		{
 			ScriptableObjectUtility.CreateAsset<BuildingSettings>();
 		}
+		[MenuItem("Assets/Create/Settings/BuffSettings")]
+		public static void CreateBuffSettings()
+		{
+			ScriptableObjectUtility.CreateAsset<BuffSettings>();
+		}
     }
 }
