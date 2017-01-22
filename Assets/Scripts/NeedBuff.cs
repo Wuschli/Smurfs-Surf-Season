@@ -32,13 +32,23 @@ public class TempBuff : NeedBuff
 {
 	private float _modifier = 0.2f;
 
-	public TempBuff(BuffSettings settings) : base(settings)
-	{
-	}
+	public TempBuff(BuffSettings settings) : base(settings) { }
 
 	public override float Apply(float currentValue, float minChange, float maxChange)
 	{
 		var factor = currentValue / Settings.Category.MaxValue;
 		return UnityEngine.Random.Range(factor * minChange + _modifier, (1 / factor) * maxChange + _modifier);
+	}
+}
+
+public class GargamelAlarm : NeedBuff
+{
+	public GargamelAlarm(BuffSettings settings) : base(settings) { }
+
+	public override float Apply(float currentValue, float minChange, float maxChange)
+	{
+		if (TicksLeft < 1)
+			return UnityEngine.Random.Range(2f, 7f);
+		return -currentValue;
 	}
 }

@@ -18,7 +18,12 @@ namespace Editor{
 			}
 			EditorGUILayout.LabelField("Agents", targetLocation.Agents.Count.ToString());
 			if (targetLocation.CurrentBuff != null)
-				EditorGUILayout.LabelField(targetLocation.CurrentBuff.GetType() + ": " + targetLocation.CurrentBuff.Settings.Category.name, targetLocation.CurrentBuff.TicksLeft.ToString());
+			{
+				var name = "";
+				if (targetLocation.CurrentBuff.Settings.Category != null)
+					name = targetLocation.CurrentBuff.Settings.Category.name;
+				EditorGUILayout.LabelField(targetLocation.CurrentBuff.GetType() + ": " + name, targetLocation.CurrentBuff.TicksLeft.ToString());
+			}
 		}
 	}
 }

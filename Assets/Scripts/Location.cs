@@ -64,7 +64,10 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 	public void TriggerBuff(BuffSettings buff){
 		if (_world.Money >= buff.Cost)
 		{
-			CurrentBuff = new TempBuff(buff);
+			if (buff.name == "GargamelAlarm")
+				CurrentBuff = new GargamelAlarm(buff);
+			else
+				CurrentBuff = new TempBuff(buff);
 			_world.Money -= buff.Cost;
 		}
 	}
