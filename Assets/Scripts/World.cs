@@ -15,7 +15,10 @@ public class World: ITickable, IInitializable
 	[Inject] public WorldSettings Settings;
 	[Inject] private List<IWorldTickable> _tickables;
 	[Inject] private List<IWorldInitializable> _initializables;
+	[Inject] private List<GargamelSpot> _gargamelSpots;
 	private float _tickTimer = 0f;
+	private int _gargamelTimer;
+
 
 	public void Register(object obj)
 	{
@@ -23,6 +26,14 @@ public class World: ITickable, IInitializable
 			_initializables.Add(obj as IWorldInitializable);
 		else if (obj is IWorldTickable)
 			_tickables.Add(obj as IWorldTickable);
+	}
+
+	public void Deregister(object obj)
+	{
+		if (obj is IWorldInitializable)
+			_initializables.Remove(obj as IWorldInitializable);
+		else if (obj is IWorldTickable)
+			_tickables.Remove(obj as IWorldTickable);
 	}
 
 	public void Tick()
@@ -43,11 +54,13 @@ public class World: ITickable, IInitializable
 				_tickables.Add(initializable as IWorldTickable);
 		}
 
-		_tickables.RemoveAll((obj) => obj == null);
+		_tickables.RemoveAll((obj) => obj == null || (obj is UnityEngine.Object && (obj as UnityEngine.Object) == null));
 
 		foreach (var tickable in _tickables)
 			tickable.WorldTick();
 		Profiler.EndSample();
+
+		CalcGargamel();
 
 		Money = Math.Max(0, Money);
 		Score = Money;
@@ -56,5 +69,19 @@ public class World: ITickable, IInitializable
 	public void Initialize()
 	{
 		Money = Settings.StartingMoney;
+		_gargamelTimer = Settings.GargamelTimeout;
+	}
+
+	void CalcGargamel()
+	{
+		_gargamelTimer--;
+		if (_gargamelTimer > 0)
+			return;
+		float r = UnityEngine.Random.value;
+		if (r > Settings.GargamelProbability)
+			return;
+		var spot = _gargamelSpots[UnityEngine.Random.Range(0, _gargamelSpots.Count - 1)];
+		spot.IsActive = true;
+		_gargamelTimer = Settings.GargamelTimeout;
 	}
 }
