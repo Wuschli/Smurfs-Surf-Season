@@ -19,10 +19,10 @@ namespace Editor{
 			EditorGUILayout.LabelField("Agents", targetLocation.Agents.Count.ToString());
 			if (targetLocation.CurrentBuff != null)
 			{
-				var name = "";
+				var category_name = "";
 				if (targetLocation.CurrentBuff.Settings.Category != null)
-					name = targetLocation.CurrentBuff.Settings.Category.name;
-				EditorGUILayout.LabelField(targetLocation.CurrentBuff.GetType() + ": " + name, targetLocation.CurrentBuff.TicksLeft.ToString());
+					category_name = ": " + targetLocation.CurrentBuff.Settings.Category.name;
+				EditorGUILayout.LabelField(targetLocation.CurrentBuff.GetType() + category_name, targetLocation.CurrentBuff.TicksLeft.ToString());
 			}
 		}
 	}

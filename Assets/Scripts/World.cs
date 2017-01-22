@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Profiling;
 using Zenject;
@@ -11,6 +12,18 @@ public class World: ITickable, IInitializable
 
 	public readonly HashSet<Agent> Agents = new HashSet<Agent>();
 	public int Money;
+	public float TimeScale
+	{
+		get
+		{
+			return _timeScale;
+		}
+		set
+		{
+			_timeScale = value;
+			DOTween.timeScale = value;
+		}
+	}
 
 	[Inject] public WorldSettings Settings;
 	[Inject] private List<IWorldTickable> _tickables;
@@ -18,7 +31,7 @@ public class World: ITickable, IInitializable
 	[Inject] private List<GargamelSpot> _gargamelSpots;
 	private float _tickTimer = 0f;
 	private int _gargamelTimer;
-
+	private float _timeScale = 1f;
 
 	public void Register(object obj)
 	{
@@ -38,7 +51,7 @@ public class World: ITickable, IInitializable
 
 	public void Tick()
 	{
-		_tickTimer -= Time.deltaTime;
+		_tickTimer -= Time.deltaTime * TimeScale;
 		if (_tickTimer > 0)
 			return;
 		_tickTimer = Settings.TickLength;
