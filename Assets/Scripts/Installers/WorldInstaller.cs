@@ -13,6 +13,9 @@ namespace Installers
             foreach (var location in Map.GetComponentsInChildren<Location>())
             {
                 Container.BindAllInterfacesAndSelf<Location>().FromInstance(location);
+				var gargamelSpot = location.GetComponentInChildren<GargamelSpot>();
+				if (gargamelSpot != null)
+					Container.BindAllInterfacesAndSelf<GargamelSpot>().FromInstance(gargamelSpot);
             }
 			Container.BindAllInterfacesAndSelf<AgentSpawnerSink>().FromInstance(Map.GetComponentInChildren<AgentSpawnerSink>());
         }

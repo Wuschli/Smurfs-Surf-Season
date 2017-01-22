@@ -74,4 +74,18 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.position, Radius);
 	}
+
+	internal void EatSmurfs()
+	{
+		int eatSmurfCount = UnityEngine.Random.Range(_world.Settings.GargamelEatMin, _world.Settings.GargamelEatMax);
+		eatSmurfCount = Math.Min(eatSmurfCount, Agents.Count);
+		for (int i = 0; i < eatSmurfCount; i++)
+		{
+			Agent smurf = Agents.ToList()[0];
+			Agents.Remove(smurf);
+			_world.Agents.Remove(smurf);
+			_world.Deregister(smurf);
+			Destroy(smurf.gameObject);
+		}
+	}
 }

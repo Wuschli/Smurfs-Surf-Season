@@ -82,4 +82,10 @@ public class Agent : MonoBehaviour, IWorldInitializable, IWorldTickable
 			return null;
 		return result;
 	}
+
+	void OnDestroy()
+	{
+		if (_activeTween != null)
+			_activeTween.Kill();
+	}
 }

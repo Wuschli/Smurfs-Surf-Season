@@ -9,4 +9,9 @@ public class WorldSettings : ScriptableObject
 	public int DayLimit = 90;
 	public int StartingMoney = 1000;
 	public int StartingPopulation = 25;
+	public int GargamelTimeout = 20;
+	public float GargamelProbability = 0.1f;
+	public int GargamelEatMin = 5;
+	public int GargamelEatMax = 10;
+	public int GargamelDuration = 10;
 }
