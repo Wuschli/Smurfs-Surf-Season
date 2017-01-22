@@ -30,3 +30,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  TicksPerDay: 10
+  DayLimit: 90
+  StartingMoney: 2000
+  StartingPopulation: 25

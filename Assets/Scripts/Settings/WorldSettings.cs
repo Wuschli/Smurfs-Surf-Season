@@ -8,4 +8,5 @@ public class WorldSettings : ScriptableObject
 	public int TicksPerDay = 20;
 	public int DayLimit = 90;
 	public int StartingMoney = 1000;
+	public int StartingPopulation = 25;
 }
