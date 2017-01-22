@@ -31,6 +31,7 @@ public class BuffBuilder : MonoBehaviour
 		var costs = Buff.Cost;
 		var enoughMoney = _world.Money >= costs;
 		Button.interactable = enoughMoney;
+		//Button.spriteState.highlightedSprite
 	}
 
 	public void OnClick()
