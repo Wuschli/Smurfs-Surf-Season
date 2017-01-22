@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9266409d74346648f24211169cc70c, type: 3}
   m_Name: JetSki
   m_EditorClassIdentifier: 
-  Cost: 0
-  TickDuration: 0
+  Cost: 200
+  TickDuration: 20
   Category: {fileID: 11400000, guid: 73d236d1270784b629d2e2afd4836fad, type: 2}

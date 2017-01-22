@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9266409d74346648f24211169cc70c, type: 3}
   m_Name: Event
   m_EditorClassIdentifier: 
-  Cost: 0
-  TickDuration: 0
+  Cost: 200
+  TickDuration: 20
   Category: {fileID: 11400000, guid: 955ff9f544ebf4aaf8874773cf6a746d, type: 2}
