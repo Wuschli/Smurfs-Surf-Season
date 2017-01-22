@@ -17,7 +17,10 @@ public class DefaultNeedValueProvider : INeedValueProvider, IWorldTickable
 
 	public void WorldTick()
 	{
-		Value += UnityEngine.Random.Range(-NeedType.MaxChange / 2f, NeedType.MaxChange / 2f);
+		if (Location.CurrentBuff != null)
+			Value += Location.CurrentBuff.Apply(Value, -NeedType.MaxChange / 2f, NeedType.MaxChange / 2f);
+		else
+			Value += UnityEngine.Random.Range(-NeedType.MaxChange / 2f, NeedType.MaxChange / 2f);
 		Value = Mathf.Clamp(Value, NeedType.MinValue, NeedType.MaxValue);
 	}
 }

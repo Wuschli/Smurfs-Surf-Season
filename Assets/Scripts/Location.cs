@@ -14,6 +14,7 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 	[Inject] private World _world;
 	public float Radius = .5f;
 	public int Size = 15;
+	public NeedBuff CurrentBuff = null;
 
 	public Dictionary<NeedSettings, INeedValueProvider> Values = new Dictionary<NeedSettings, INeedValueProvider>();
 	public HashSet<Agent> Agents = new HashSet<Agent>();
@@ -30,6 +31,12 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 
 	public void WorldTick()
 	{
+		if (CurrentBuff != null)
+		{
+			CurrentBuff.Tick();
+			if (CurrentBuff.IsDone)
+				CurrentBuff = null;
+		}
 		_world.Money += _buildingSpots.Where(spot => spot.Building != null).Sum(spot => spot.Building.Income) * Agents.Count;
 		_world.Money -= _buildingSpots.Where(spot => spot.Building != null).Sum(spot => spot.Building.MaintenanceCost);
 	}
@@ -57,7 +64,7 @@ public class Location : MonoBehaviour, IWorldTickable, IWorldInitializable
 	public void TriggerBuff(BuffSettings buff){
 		if (_world.Money >= buff.Cost)
 		{
-			// To Do
+			CurrentBuff = new TempBuff(buff);
 			_world.Money -= buff.Cost;
 		}
 	}

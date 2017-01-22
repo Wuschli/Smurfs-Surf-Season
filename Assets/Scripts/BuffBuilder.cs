@@ -13,6 +13,9 @@ public class BuffBuilder : MonoBehaviour
 
 	public Location Location;
 	public BuffSettings Buff;
+	public Sprite AvailableSprite;
+	public Sprite ActiveSprite;
+	public Sprite DisabledSprite;
 
 	Button _button;
 
@@ -30,7 +33,18 @@ public class BuffBuilder : MonoBehaviour
 	{
 		var costs = Buff.Cost;
 		var enoughMoney = _world.Money >= costs;
-		Button.interactable = enoughMoney;
+		var interactable = enoughMoney && Location.CurrentBuff == null;
+		if (!interactable)
+		{
+			var state = Button.spriteState;
+			if (Location.CurrentBuff != null && Location.CurrentBuff.Settings == Buff)
+				state.disabledSprite = ActiveSprite;
+			else
+				state.disabledSprite = DisabledSprite;
+			Button.spriteState = state;
+		}
+		Button.interactable = interactable;
+		//Button.spriteState.highlightedSprite
 	}
 
 	public void OnClick()

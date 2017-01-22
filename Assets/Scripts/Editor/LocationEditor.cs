@@ -17,6 +17,8 @@ namespace Editor{
 				EditorGUILayout.LabelField(val.Key.name, val.Value.Value.ToString());
 			}
 			EditorGUILayout.LabelField("Agents", targetLocation.Agents.Count.ToString());
+			if (targetLocation.CurrentBuff != null)
+				EditorGUILayout.LabelField(targetLocation.CurrentBuff.GetType() + ": " + targetLocation.CurrentBuff.Settings.Category.name, targetLocation.CurrentBuff.TicksLeft.ToString());
 		}
 	}
 }
